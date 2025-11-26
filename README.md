@@ -71,8 +71,7 @@ Figma:https://www.figma.com/design/RScq5hqHl8vhJISl7ntqb9/currency-converter?nod
 -----
 
 
-📂 Структура проекта
 │── index.html      # Основная разметка страницы
 │── styles.css      # Стили
-│── script.js       # Логика приложения 
+│── script.js       # Логика приложения (загрузка цитат)
 └── README.md       # Описание проекта
