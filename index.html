@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="icon.svg" type="image/svg+xml"/> 
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <div class="header-controls">
+    <button class="btn" id="conversion-history" type="button" aria-expanded="false"> History</button>
+    <button class="btn" id="theme-toggle" type="button">Dark mode</button>
+
+    <button id="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" type="button">
+      <span class="hamburger-bars">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </span>
+    </button>
+  </div>
+
+  <div id="history-panel" class="history-panel" aria-hidden="true">
+    <div class="history-header">
+      <strong>Conversion history</strong>
+      <button id="clear-history" class="btn small" type="button">Clear</button>
+    </div>
+    <ul id="history-list" class="history-list"></ul>
+    <div id="history-empty" class="history-empty">History is empty</div>
+  </div>
+
+  
+  <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <button id="mobile-history" class="menu-item" type="button"> History</button>
+    <button id="mobile-theme" class="menu-item" type="button"> Dark mode</button>
+  </nav>
+</header>
+
+<main>
+  <h1>Currency Converter</h1>
+  <h3>Enter amount and select currencies</h3>
+
+  <div class="converter">
+    <label for="fromCurrency">From:</label>
+    <select id="fromCurrency" aria-label="From currency">
+      <option value="USD">USD - US Dollar</option>
+      <option value="EUR">EUR - Euro</option>
+      <option value="GBP">GBP - British Pound</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+      <option value="AUD">AUD - Australian Dollar</option>
+      <option value="CAD">CAD - Canadian Dollar</option>
+      <option value="CHF">CHF - Swiss Franc</option>
+      <option value="CNY">CNY - Chinese Yuan</option>
+      <option value="INR">INR - Indian Rupee</option>
+      <option value="RUB">RUB - Russian Ruble</option>
+    </select>
+
+    <label for="toCurrency">To:</label>
+    <select id="toCurrency" aria-label="To currency">
+      <option value="USD">USD - US Dollar</option>
+      <option value="EUR">EUR - Euro</option>
+      <option value="GBP">GBP - British Pound</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+      <option value="AUD">AUD - Australian Dollar</option>
+      <option value="CAD">CAD - Canadian Dollar</option>
+      <option value="CHF">CHF - Swiss Franc</option>
+      <option value="CNY">CNY - Chinese Yuan</option>
+      <option value="INR">INR - Indian Rupee</option>
+      <option value="RUB">RUB - Russian Ruble</option>
+    </select>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount" value="1" />
+
+    <button id="convert" type="button">Convert</button>
+
+    <div class="result">
+      <p>Converted: <span id="convertedAmount">-</span></p>
+      <p>Rate: <span id="currentRate">-</span></p>
+    </div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

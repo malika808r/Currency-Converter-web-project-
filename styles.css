@@ -1,0 +1,472 @@
+:root {
+  --bg-light: #f5f8ff;
+  --bg-dark: #111;
+  --card-light: white;
+  --card-dark: #222;
+  --text-light: #222;
+  --text-dark: #eee;
+  --accent: #2962ff;
+  --accent-hover: #1745b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+  min-height: 100vh;
+}
+
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* === HEADER === */
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 15px 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+body.dark .btn {
+  background: var(--accent);
+}
+
+body.dark .btn:hover {
+  background: var(--accent-hover);
+}
+
+/* === HAMBURGER MENU === */
+#hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none; /* Скрыто по умолчанию (для десктопа) */
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-bars .bar {
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+#hamburger[aria-expanded="true"] .bar:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+#hamburger[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+
+#hamburger[aria-expanded="true"] .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* === MOBILE MENU === */
+.mobile-menu {
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  background: var(--card-light);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  transform: scale(0);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+body.dark .mobile-menu {
+  background: var(--card-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu[aria-hidden="false"] {
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.menu-item {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  text-align: left;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+body.dark .menu-item {
+  color: var(--text-dark);
+}
+
+.menu-item:hover {
+  background: rgba(41, 98, 255, 0.1);
+}
+
+/* === MAIN CONTAINER === */
+main {
+  background: var(--card-light);
+  width: 100%;
+  max-width: 400px;
+  margin: 80px auto 20px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark main {
+  background: var(--card-dark);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  margin: 0 0 5px 0;
+  font-size: 26px;
+  color: var(--accent);
+}
+
+h3 {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+body.dark h3 {
+  color: #aaa;
+}
+
+/* === CONVERTER FORM === */
+.converter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #555;
+}
+
+body.dark label {
+  color: #bbb;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  background: white;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+body.dark select,
+body.dark input {
+  background: #1a1a1a;
+  color: #eee;
+  border-color: #444;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(41, 98, 255, 0.3);
+}
+
+body.dark select:focus,
+body.dark input:focus {
+  box-shadow: 0 0 8px rgba(41, 98, 255, 0.2);
+}
+
+/* === CONVERT BUTTON === */
+#convert {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#convert:hover {
+  background: var(--accent-hover);
+  transform: scale(1.02);
+}
+
+#convert:active {
+  transform: scale(0.98);
+}
+
+/* === RESULT === */
+.result {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+body.dark .result {
+  border-top-color: #333;
+}
+
+.result p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+#convertedAmount,
+#currentRate {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+body.dark #convertedAmount,
+body.dark #currentRate {
+  color: #4c8dff;
+}
+
+/* === HISTORY PANEL STYLES (Базовые стили для десктопа) === */
+.history-panel {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 300px;
+  background: var(--card-light);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 98;
+  max-height: 400px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+body.dark .history-panel {
+  background: var(--card-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.history-panel[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+body.dark .history-header {
+  border-bottom-color: #444;
+}
+
+.history-header strong {
+  font-size: 16px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+  line-height: 1.4;
+}
+
+.history-item:hover {
+  background: rgba(41, 98, 255, 0.1);
+}
+
+body.dark .history-item:hover {
+  background: rgba(41, 98, 255, 0.15);
+}
+
+.history-meta {
+  font-size: 11px;
+  color: #999;
+}
+
+body.dark .history-meta {
+  color: #888;
+}
+
+.history-empty {
+  text-align: center;
+  padding: 20px 0;
+  color: #999;
+}
+
+.btn.small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* =========================================
+   MEDIA QUERIES (АДАПТИВНОСТЬ)
+   ========================================= */
+
+/* 1. MOBILE VERSION (до 768px) */
+@media (max-width: 768px) {
+  /* Скрываем десктопные кнопки в Header */
+  #conversion-history, 
+  #theme-toggle {
+    display: none;
+  }
+
+  /* Показываем гамбургер */
+  #hamburger {
+    display: flex;
+  }
+
+  header {
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+  }
+
+  main {
+    max-width: 90%;
+    margin: 70px auto 20px;
+    padding: 20px;
+  }
+
+  h1 { font-size: 20px; }
+  h3 { font-size: 12px; }
+
+  select, input, #convert {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* ИСПРАВЛЕНИЕ: Панель истории для мобильных */
+  .history-panel {
+    position: fixed;       /* Фиксируем относительно экрана */
+    top: 70px;             /* Отступ от верха */
+    left: 50%;             /* Центр по горизонтали */
+    transform: translateX(-50%); /* Центрирование */
+    width: 90%;            /* Ширина */
+    max-width: 350px;
+    max-height: 60vh;      /* Максимальная высота */
+    z-index: 1000;         /* Поверх всего */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    
+    /* Сброс анимации десктопа */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  /* Активная панель на мобильном */
+  .history-panel[aria-hidden="false"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%); /* Сохраняем центрирование */
+  }
+}
+
+/* 2. TABLET VERSION (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main {
+    max-width: 450px;
+  }
+}
+
+/* 3. DESKTOP VERSION (свыше 769px) */
+@media (min-width: 769px) {
+  /* Скрываем элементы мобильного меню */
+  #mobile-history,
+  #mobile-theme {
+    display: none;
+  }
+
+  /* Показываем десктопные кнопки */
+  #conversion-history,
+  #theme-toggle {
+    display: block; 
+  }
+
+  /* Скрываем гамбургер */
+  #hamburger {
+    display: none;
+  }
+
+  main {
+    max-width: 400px;
+  }
+}
